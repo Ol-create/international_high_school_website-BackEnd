@@ -8,6 +8,8 @@ django = "*"
 pillow = "*"
 django-debug-toolbar = "*"
 djangorestframework = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

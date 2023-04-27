@@ -81,10 +81,15 @@ WSGI_APPLICATION = 'international_school.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'international_school',
+        'USER': 'paul96',
+        'PASSWORD': 'OLUola1992',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
