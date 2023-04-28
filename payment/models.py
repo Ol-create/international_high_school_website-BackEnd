@@ -9,6 +9,6 @@ class Payment(models.Model):
     payment_date = models.DateTimeField()
     payment_type = models.CharField(max_length=255)
 
-    content_type = models.OneToOneField(ContentType, on_delete=models.SET_DEFAULT)
-    object_id = models.PositiveIntegerField()
+    content_type = models.OneToOneField(ContentType, on_delete=models.SET_DEFAULT, default=None)
+    object_id = models.PositiveIntegerField(default=None)
     content_object = GenericForeignKey()

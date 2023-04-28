@@ -6,6 +6,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 class Parent(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, default=None)
+    object_id = models.PositiveIntegerField(default=None)
     content_object = GenericForeignKey()

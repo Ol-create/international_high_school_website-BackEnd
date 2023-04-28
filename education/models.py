@@ -25,23 +25,28 @@ class Course(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     start_date = models.DateField(auto_now=True)
+    student = models.ManyToManyField(Student)
 
 class NewsAndEvent(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     date = models.DateField(auto_now_add=True)
+    course = models.ManyToManyField(Course)
 
 class ComputerBaseTest(models.Model):
     name = models.CharField(max_length=255)
     time = models.TimeField(auto_now_add=True)
     score = models.IntegerField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=None)
 
 class AcedemicReport (models.Model):
     report_type = models.CharField(max_length=255)
     grade = models.CharField(max_length=1)
     date = models.DateField(auto_now_add=True)
+    student = models.OneToOneField(Student, on_delete=models.CASCADE, default=None)
 
 class Alumni(models.Model):
     name = models.CharField(max_length=255)
     graduation_year = models.DateField(auto_now_add=True)
     current_occupation = models.CharField(max_length=255)
+    course = models.ForeignKey(Course, on_delete=models.SET_DEFAULT, default=None)

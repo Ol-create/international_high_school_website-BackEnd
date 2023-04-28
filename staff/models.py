@@ -8,6 +8,6 @@ class Staff(models.Model):
     email = models.EmailField(unique=True)
     job_title = models.CharField(max_length=255)
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.PROTECT)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.PROTECT, default=None)
+    object_id = models.PositiveIntegerField(default=None)
     content_object = GenericForeignKey()
