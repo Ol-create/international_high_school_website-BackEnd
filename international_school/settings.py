@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'international_school.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'international_school',
+        'NAME': 'international_school_1',
         'USER': 'paul96',
         'PASSWORD': 'OLUola1992',
         'HOST': 'localhost',
@@ -138,3 +138,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+DATE_FORMAT = 'd/m/Y'
