@@ -12,6 +12,7 @@ class studentAdmin(admin.ModelAdmin):
     ordering = ['first_name']
     list_filter = ['discipline', 'class_level', 'gender']
     list_per_page = 15
+    search_fields = ['first_name__istartswith', 'last_name__istartswith']
 
     def full_name(self, student:Student):
         return f'{student.first_name} {student.last_name}'
