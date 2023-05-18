@@ -53,8 +53,9 @@ class Student(models.Model):
     gender = models.CharField(max_length=2, 
                               choices=SEX_TYPE_CHOICE, 
                               default=PREFER_NOT_TO_SAY_TYPE)
-
-
+    
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 #Database Model for Courses
 
 class Course(models.Model):
@@ -89,7 +90,9 @@ class Course(models.Model):
     description = models.TextField(null=True)
     # instructor = models.OneToOneField('stafff')
     score = models.ManyToManyField('ComputerBaseTest',default=None)
-    
+
+    def __str__(self):
+        return self.course_name    
 
 class NewsAndEvent(models.Model):
     author = models.CharField(max_length=255)                              
@@ -99,6 +102,9 @@ class NewsAndEvent(models.Model):
     # image = models.ImageField()
     news_date = models.DateField()
     news_time = models.TimeField()
+
+    def __str__(self):
+        return self.news_title
 
 class ComputerBaseTest(models.Model):
 
@@ -124,6 +130,9 @@ class ComputerBaseTest(models.Model):
     grade = models.CharField(max_length=20, choices=grade_choice, default=None)
     score = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.examination_name} {self.student}'
+
 class AcedemicReport (models.Model):
     school_term_choice = [
         ('T1', 'First Term'),
@@ -135,6 +144,9 @@ class AcedemicReport (models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE, default=None)
     course = models.ForeignKey(Course, on_delete=models.PROTECT, default=None)
 
+    def __str__(self):
+        return f'{self.school_term} {self.report_date}'
+
 class Alumni(models.Model):
     
     student = models.OneToOneField(Student, on_delete=models.PROTECT, default=None)
@@ -142,3 +154,6 @@ class Alumni(models.Model):
     awards = models.TextField()
     graduation_year = models.DateField()
     current_occupation = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return f'{self.student} ({self.graduation_year})'

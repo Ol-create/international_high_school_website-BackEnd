@@ -23,7 +23,6 @@ class AlumniAdmin(admin.ModelAdmin):
                     'get_student_email',
                     'phone_number', 
                     'current_occupation',
-                    'get_student_gender',
                     ]
     
     list_per_page = 20
@@ -40,10 +39,6 @@ class AlumniAdmin(admin.ModelAdmin):
     
     get_student_email.short_description = 'Student Email'
 
-    def get_student_gender(self, obj):
-        return obj.student.gender
-    
-    get_student_gender.short_description = 'Gender'
     
    
 admin.site.register(Course)

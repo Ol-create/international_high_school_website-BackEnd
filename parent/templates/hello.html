@@ -9,9 +9,9 @@
   <body>
     <h1>Hello {{name}}</h1>
     <ul>
-      {% for  data in alumni_dataset%}
+      {% for  data in dataset %}
       
-     <li> {{ data.student.first_name }}  </li>
+     <li> {{ data }}  </li>
       {% endfor %}
     </ul>
   </body>
