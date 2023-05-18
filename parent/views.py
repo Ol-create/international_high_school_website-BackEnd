@@ -10,17 +10,23 @@ def hello_victor(request):
     
 
 def create_student(request):
-    student = Student()
-    student.first_name = 'Paul'
-    student.last_name = 'Oluyemi'
-    student.address = '49, Ojido AdoEkiti'
-    student.birthday = '2023-06-28'
-    student.class_level = 'SS3'
-    student.discipline = 'SCI'
-    student.email = 'oluola96@gmail.com'
-    student.gender = 'ML'
-    student.id = 1001
-    student.save()
+    # student = Student()
+    # student.first_name = 'Paul'
+    # student.last_name = 'Oluyemi'
+    # student.address = '49, Ojido AdoEkiti'
+    # student.birthday = '2023-06-28'
+    # student.class_level = 'SS3'
+    # student.discipline = 'SCI'
+    # student.email = 'oluola96@gmail.com'
+    # student.gender = 'ML'
+    # student.id = 1001
+    # student.save()
+
+    # student = Student.objects.get(pk=1001)
+    # student.first_name = 'Oluola'
+    # student.save()
+
+    Student.objects.filter(pk=1001).update(first_name='Paul')
 
     data = Student.objects.latest('id')
 
