@@ -26,8 +26,8 @@ def create_student(request):
     # student.first_name = 'Oluola'
     # student.save()
 
-    Student.objects.filter(pk=1001).update(first_name='Paul')
-
+    student = Student(pk=1001)
+    student.delete()
     data = Student.objects.latest('id')
 
     return render(request, 'create_student.html', {'data': data})

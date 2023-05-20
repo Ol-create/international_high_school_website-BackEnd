@@ -61,7 +61,7 @@ class Student(models.Model):
 class Course(models.Model):
 
     course_choice = [
-        ('ENG', 'English Language'),
+        ("ENG", "English Language"),
         ('MTS', 'Mathematics'),
          ('PHY', 'Physics'),
           ('CHEM', 'Chemistry'),
@@ -92,7 +92,7 @@ class Course(models.Model):
     score = models.ManyToManyField('ComputerBaseTest',default=None)
 
     def __str__(self):
-        return self.course_name    
+        return self.get_course_choice_display()
 
 class NewsAndEvent(models.Model):
     author = models.CharField(max_length=255)                              

@@ -41,7 +41,14 @@ class AlumniAdmin(admin.ModelAdmin):
 
     
    
-admin.site.register(Course)
+# Course Admin
+@admin.register(Course)
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['course_name'] # Customize the list of fields displayed in the list view
+    list_filter = ['course_name'] # Add filters to the list view
+    search_fields = ('course_name',)
+
+    
 admin.site.register(AcedemicReport)
 
 # ComputerBaseTest
