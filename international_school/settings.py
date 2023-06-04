@@ -144,3 +144,7 @@ INTERNAL_IPS = [
 DATE_INPUT_FORMATS = [
     "%d/%m/%Y",  
 ]
+
+REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False
+}
