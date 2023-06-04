@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     "debug_toolbar",
     'education',
     'parent',
@@ -82,11 +83,10 @@ WSGI_APPLICATION = 'international_school.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'international_school_1',
+        'NAME': 'real_international',
         'USER': 'paul96',
         'PASSWORD': 'OLUola1992',
         'HOST': 'localhost',
-        'PORT': '5432',
     }
 }
 
@@ -139,4 +139,12 @@ INTERNAL_IPS = [
     # ...
 ]
 
-DATE_FORMAT = 'd/m/Y'
+# Change Date Format
+
+DATE_INPUT_FORMATS = [
+    "%d/%m/%Y",  
+]
+
+REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False
+}

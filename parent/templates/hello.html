@@ -9,10 +9,9 @@
   <body>
     <h1>Hello {{name}}</h1>
     <ul>
-      {% for student in query_set %}
-
-      <li>Hello {{student.first_name}}, {{student.last_name}}</li>
-
+      {% for  data in alumni_dataset%}
+      
+     <li> {{ data.student.first_name }}  </li>
       {% endfor %}
     </ul>
   </body>
