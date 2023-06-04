@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import status
 from .models import Student
 from .serializers import StudentSerializer
 
@@ -12,6 +13,11 @@ def student_list(request):
 # View Details about a Student
 @api_view()
 def student_detail(request, id):
-    student = Student.objects.get(pk=id)
-    serializer = StudentSerializer(student)
-    return Response(serializer.data)
+    try:
+        student = Student.objects.get(pk=id)
+        serializer = StudentSerializer(student)
+        return Response(serializer.data)
+    except Student.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    
