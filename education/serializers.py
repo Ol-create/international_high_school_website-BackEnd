@@ -1,8 +1,10 @@
 from rest_framework import serializers
+from .models import Student, ComputerBaseTest, Course, AcedemicReport, Alumni, NewsAndEvent
 
-class StudentSerializer(serializers.Serializer):
-    first_name = serializers.CharField(max_length=255)
-    last_name = serializers.CharField(max_length=255)
-    email = serializers.EmailField()
-    address = serializers.CharField(max_length=255)
-    birthday = serializers.DateField()
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ['id', 'first_name', 'last_name', 'student_identification_number', 
+                  'class_level', 'discipline', 'email', 'address', 'birthday', 'gender']
+    
+
