@@ -7,11 +7,15 @@ from .serializers import StudentSerializer, AlumniSerializer
 
 # Create your views here.
 #Get all student data
-@api_view()
+@api_view(['GET', 'POST'])
 def student_list(request):
-    students = Student.objects.all()
-    serialiser = StudentSerializer(students, many=True)
-    return Response(serialiser.data)
+    if request.method == 'GET':
+        students = Student.objects.select_related('alumni_student').all()
+        serialiser = StudentSerializer(students, many=True, context={'request': request})
+        return Response(serialiser.data)
+    elif request.method == 'POST':
+        serialiser = StudentSerializer(data=request.data)
+        return Response("OK")
 
 # View Details about a Student
 @api_view()
