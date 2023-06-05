@@ -53,6 +53,8 @@ class Student(models.Model):
     gender = models.CharField(max_length=2, 
                               choices=SEX_TYPE_CHOICE, 
                               default=PREFER_NOT_TO_SAY_TYPE)
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
 
 #Database Model for Courses
@@ -136,8 +138,7 @@ class AcedemicReport (models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT, default=None)
 
 class Alumni(models.Model):
-    
-    student = models.OneToOneField(Student, on_delete=models.PROTECT, default=None)
+    student = models.OneToOneField(Student, on_delete=models.PROTECT, default=None, related_name='alumni_student')
     phone_number = models.CharField(max_length=20)
     awards = models.TextField()
     graduation_year = models.DateField()
