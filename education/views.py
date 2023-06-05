@@ -15,7 +15,11 @@ def student_list(request):
         return Response(serialiser.data)
     elif request.method == 'POST':
         serialiser = StudentSerializer(data=request.data)
-        return Response("OK")
+        if serialiser.is_valid():
+            serialiser.validated_data
+            return Response("OK")
+        else:
+            return Response (serialiser.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # View Details about a Student
 @api_view()
